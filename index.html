@@ -52,7 +52,7 @@
     }
 
     .top-banner img {
-      max-width: 80%;
+      max-width: 100%;
       height: auto;
       display: block;
       margin: 0 auto;
@@ -60,7 +60,7 @@
 
     @media (max-width: 800px) {
       .top-banner img {
-        max-width: 80%;
+        max-width: 60%;
       }
     }
 
@@ -184,11 +184,72 @@
     margin: 0;
     padding: 0;
     display: flex;
-    gap: 10px;  /* Optional: adds spacing between items */
+    gap: 10px;
     text-align: center;
     justify-content: center;
     align-items: center;
 }
+
+    nav li {
+      position: relative;
+    }
+
+    nav > ul > li > a {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    nav > ul > li:has(ul) > a::after {
+      content: '▼';
+      font-size: 0.7rem;
+      margin-left: 8px;
+      transition: transform 0.3s;
+    }
+
+    nav > ul > li:hover:has(ul) > a::after {
+      transform: rotate(-180deg);
+    }
+
+    @media (max-width: 1000px) {
+      nav > ul > li.active:has(ul) > a::after {
+        transform: rotate(-180deg);
+      }
+    }
+
+    nav ul ul {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      flex-direction: column;
+      gap: 0;
+      background-color: #e8f4f0;
+      border: 1px solid #0b8457;
+      border-radius: 4px;
+      min-width: 200px;
+    }
+
+    nav ul ul li {
+      width: 100%;
+    }
+
+    nav ul ul a {
+      display: block;
+      padding: 10px 15px;
+      text-align: left;
+      width: 100%;
+    }
+
+    nav li:hover > ul {
+      display: flex;
+    }
+
+    nav ul ul ul {
+      top: 0;
+      left: 100%;
+      border-radius: 0 4px 4px 0;
+    }
 
     nav a:hover {
       text-decoration: underline;
@@ -221,13 +282,16 @@
       transform: rotate(-45deg) translate(7px, -7px);
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 1000px) {
       nav {
         flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 8px 15px;
       }
 
       .hamburger {
         display: flex;
+        order: -1;
       }
 
       nav ul {
@@ -252,6 +316,26 @@
         text-align: center;
         padding: 1rem 0;
         border-bottom: 1px solid #e2e2e2;
+        width: 100%;
+      }
+
+      nav ul ul {
+        position: static;
+        display: none;
+        background-color: #e8f4f0;
+        border: none;
+        border-radius: 0;
+        padding: 0;
+        margin: 0;
+      }
+
+      nav li.active > ul {
+        display: flex;
+      }
+
+      nav ul ul a {
+        padding: 8px 30px;
+        font-size: 1rem;
       }
 
       nav a {
@@ -278,7 +362,14 @@
     </div>
     <ul>
         <li><a href="#about">വേദിയെ കുറിച്ച്</a></li>
-        <li><a href="#activities">പ്രവർത്തനങ്ങൾ</a></li>
+        <li>
+            <a href="#activities">പ്രവർത്തനങ്ങൾ</a>
+            <ul>
+                <li><a href="#events">പ്രധാന പരിപാടികൾ</a></li>
+                <li><a href="#onam2025">ഓണാഘോഷം 2025</a></li>
+                <li><a href="#cultural">സാംസ്കാരിക പരിപാടികൾ</a></li>
+            </ul>
+        </li>
         <li><a href="#officebearers">ഭാരവാഹികൾ</a></li>
         <li><a href="#contact">അന്വേഷണങ്ങൾ</a></li>
     </ul>
@@ -398,10 +489,32 @@
         navMenu.classList.toggle('active');
     });
 
+    // Handle submenu toggle on mobile
+    document.querySelectorAll('nav li').forEach(li => {
+        const link = li.querySelector('a');
+        const submenu = li.querySelector('ul');
+        
+        if (submenu) {
+            link.addEventListener('click', (e) => {
+                if (window.innerWidth <= 1000) {
+                    e.preventDefault();
+                    li.classList.toggle('active');
+                }
+            });
+        }
+    });
+
     document.querySelectorAll('nav a').forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
+        const li = link.parentElement;
+        if (!li.querySelector('ul')) {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.querySelectorAll('nav li').forEach(item => item.classList.remove('active'));
+            });
+        }
+    });
+</script>
         });
     });
 </script>
