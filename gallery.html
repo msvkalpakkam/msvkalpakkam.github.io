@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+  <meta charset="UTF-8">
+  <title>ഗാലറി | മലയാള സാംസ്കാരികവേദി കൽപ്പാക്കം</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Noto Sans Malayalam', sans-serif;
+      background: #f8f8f2 url('bg-13.png') repeat;
+      background-size: 400px 400px;
+      color: #222;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background-color: #FAFFE9;
+      color: #222;
+      padding: 12px 0 8px 0;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      font-weight: 700;
+    }
+    header p {
+      margin: 4px 0 0;
+      font-size: 1.1rem;
+      color: #4b4b4b;
+    }
+    .gallery-container {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 0 10px 30px 10px;
+      background: #fffdf7cc;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 16px;
+      padding: 16px 0;
+    }
+    .gallery-item {
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .gallery-item:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-bottom: 1px solid #eee;
+      background: #f3f3f3;
+    }
+    .caption {
+      padding: 8px 6px 10px 6px;
+      font-size: 1rem;
+      color: #333;
+      text-align: center;
+    }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.3rem;
+      }
+      .gallery-container {
+        padding: 0 2px 18px 2px;
+      }
+      .gallery-grid {
+        gap: 8px;
+      }
+      .gallery-item img {
+        height: 80px;
+      }
+      .caption {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ഗാലറി</h1>
+    <p>മലയാള സാംസ്കാരികവേദി കൽപ്പാക്കം - ചിത്രശാല</p>
+  </header>
+  <div class="gallery-container">
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="gallery1.jpg" alt="ചിത്രം 1">
+        <div class="caption">ചിത്രം 1</div>
+      </div>
+      <div class="gallery-item">
+        <img src="gallery2.jpg" alt="ചിത്രം 2">
+        <div class="caption">ചിത്രം 2</div>
+      </div>
+      <div class="gallery-item">
+        <img src="gallery3.jpg" alt="ചിത്രം 3">
+        <div class="caption">ചിത്രം 3</div>
+      </div>
+      <div class="gallery-item">
+        <img src="gallery4.jpg" alt="ചിത്രം 4">
+        <div class="caption">ചിത്രം 4</div>
+      </div>
+      <!-- Add more gallery items as needed -->
+    </div>
+  </div>
+</body>
+</html>

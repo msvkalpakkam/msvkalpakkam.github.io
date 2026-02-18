@@ -1,0 +1,22 @@
+1. page layout
+    a. title bar
+    b. nav bar
+    c. bady/content
+    d. footer
+
+2. page design:
+    a. page background // pattern
+
+3. Nav menu entries
+    1. vediyekkurichu
+        - pravarthana lakshyangal
+        - pravarthanreethi
+        - pravarthana rekhakal 
+    2. pravarthanasamithi
+        - mun kaalathethu
+    3. chitrangal
+        - videos
+    4. അന്വേഷണങ്ങൾ
+
+
+
